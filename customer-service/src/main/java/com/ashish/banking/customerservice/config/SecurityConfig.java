@@ -1,0 +1,10 @@
+package com.ashish.banking.customerservice.config;
+import org.springframework.context.annotation.*;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+@Configuration public class SecurityConfig {
+ @Bean SecurityFilterChain security(HttpSecurity http)throws Exception{
+  return http.csrf(c->c.disable()).authorizeHttpRequests(a->a.requestMatchers("/api/customers/register","/actuator/health","/swagger-ui/**","/swagger-ui.html","/v3/api-docs/**").permitAll().anyRequest().authenticated()).oauth2ResourceServer(o->o.jwt(Customizer.withDefaults())).build();
+ }
+}
