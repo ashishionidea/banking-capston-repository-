@@ -13,6 +13,8 @@ public class BankAccount {
  public Long getId(){return id;} public String getAccountNumber(){return accountNumber;} public void setAccountNumber(String v){accountNumber=v;}
  public Long getCustomerId(){return customerId;} public void setCustomerId(Long v){customerId=v;}
  public BigDecimal getBalance(){return balance;} public void setBalance(BigDecimal v){balance=v;}
+ public void credit(BigDecimal amount){balance=balance.add(amount);}
+ public void debit(BigDecimal amount){if(balance.compareTo(amount)<0)throw new IllegalStateException("Insufficient funds");balance=balance.subtract(amount);}
  public String getCurrency(){return currency;} public void setCurrency(String v){currency=v;}
  public String getStatus(){return status;} public void setStatus(String v){status=v;}
  public Instant getCreatedAt(){return createdAt;}
