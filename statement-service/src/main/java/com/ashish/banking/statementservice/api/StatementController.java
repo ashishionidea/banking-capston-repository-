@@ -10,5 +10,5 @@ public class StatementController{
   for(var t:rows)b.append(csv(t.reference())).append(',').append(csv(t.type())).append(',').append(csv(t.status())).append(',').append(t.amount()).append(',').append(csv(t.currency())).append(',').append(t.createdAt()).append('\n');
   return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename=account-statement.csv").contentType(MediaType.parseMediaType("text/csv")).body(b.toString());
  }
- private String csv(String value){if(value==null)return "";return "\""+value.replace("\"","\\"")+"\"";}
+ private String csv(String value){if(value==null)return "";String v=value.replace("\"","\\\"");return "\""+v+"\"";}
 }

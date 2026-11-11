@@ -1,8 +1,6 @@
 server:
   port: 8084
 spring:
-  config:
-    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888}
   application:
     name: bill-payment-service
   datasource:
@@ -29,3 +27,6 @@ management:
     web:
       exposure:
         include: health,info,metrics,prometheus
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

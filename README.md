@@ -15,7 +15,7 @@ docker compose up -d mysql kafka
 mvn clean verify
 ```
 
-The modules are independent Spring Boot applications. Each domain service owns a separate MySQL schema; Kafka is used for asynchronous workflows. Remaining modules (loan, support and notification) are tracked in the BRD traceability as not yet scaffolded.
+The modules have Dockerfiles and can be run with the Compose stack after implementation is reviewed.
 
 ## Important
 This is a development baseline, not production-ready banking software. Before production use, complete security review, encryption/key management, TLS/mTLS, refresh-token rotation, outbox/retry/DLT policies, audit retention and regulatory compliance validation. No real customer data or credentials belong in this repository.

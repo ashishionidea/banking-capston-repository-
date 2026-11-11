@@ -1,8 +1,6 @@
 server:
   port: 8083
 spring:
-  config:
-    import: optional:configserver:${CONFIG_SERVER_URL:http://localhost:8888}
   application:
     name: transfer-service
   datasource:
@@ -15,17 +13,6 @@ spring:
     open-in-view: false
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    consumer:
-      group-id: transfer-saga
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.trusted.packages: com.ashish.banking.transferservice.messaging
-        spring.json.use.type.headers: true
 eureka:
   client:
     service-url:
@@ -40,7 +27,6 @@ management:
     web:
       exposure:
         include: health,info,metrics,prometheus
-app:
-  kafka:
-    topics:
-      transfer-commands: banking.transfer.commands
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
