@@ -13,28 +13,36 @@ spring:
       routes:
         - id: customer-service
           uri: lb://CUSTOMER-SERVICE
-          predicates: [Path=/api/customers/**,/api/auth/**]
+          predicates:
+            - Path=/api/customers/**,/api/auth/**
         - id: account-service
           uri: lb://ACCOUNT-SERVICE
-          predicates: [Path=/api/accounts/**]
+          predicates:
+            - Path=/api/accounts/**
         - id: transfer-service
           uri: lb://TRANSFER-SERVICE
-          predicates: [Path=/api/transfers/**]
+          predicates:
+            - Path=/api/transfers/**
         - id: bill-payment-service
           uri: lb://BILL-PAYMENT-SERVICE
-          predicates: [Path=/api/bill-payments/**]
+          predicates:
+            - Path=/api/bill-payments/**
         - id: statement-service
           uri: lb://STATEMENT-SERVICE
-          predicates: [Path=/api/statements/**]
+          predicates:
+            - Path=/api/statements/**
         - id: loan-service
           uri: lb://LOAN-SERVICE
-          predicates: [Path=/api/loans/**]
+          predicates:
+            - Path=/api/loans/**
         - id: support-service
           uri: lb://SUPPORT-SERVICE
-          predicates: [Path=/api/support/**]
+          predicates:
+            - Path=/api/support/**
         - id: notification-service
           uri: lb://NOTIFICATION-SERVICE
-          predicates: [Path=/api/notifications/**]
+          predicates:
+            - Path=/api/notifications/**
 eureka:
   client:
     service-url:
