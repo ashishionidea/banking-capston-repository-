@@ -1,0 +1,32 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: bill-payment-service
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/bill_payment_service?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC}
+    username: ${DB_USERNAME:banking}
+    password: ${DB_PASSWORD:banking}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:29092}
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+security:
+  oauth2:
+    resourceserver:
+      jwt:
+        issuer-uri: ${JWT_ISSUER_URI:http://localhost:9000/realms/banking}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
